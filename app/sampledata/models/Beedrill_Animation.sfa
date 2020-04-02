@@ -109,7 +109,7 @@
     file: 'sampledata/models/Beedrill_Animation.fbx',
     name: 'Beedrill_Animation',
     recenter: 'root',
-    scale: 0.513073,
+    scale: 1,
   },
   samplers: [
     {
