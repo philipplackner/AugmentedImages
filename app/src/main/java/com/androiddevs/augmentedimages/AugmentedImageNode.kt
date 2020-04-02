@@ -47,8 +47,20 @@ class AugmentedImageNode(
         val modelScale = (maxImageEdge / maxEdgeSize) / 2f
 
         modelNode.localScale = Vector3(modelScale, modelScale, modelScale)
+
+        startAnimation()
     }
 
+    private fun startAnimation() {
+        if(renderable.animationDataCount == 0) {
+            return
+        }
+        val animationData = renderable.getAnimationData("Beedrill_Animation")
+        ModelAnimator(animationData, renderable).apply {
+            repeatCount = ModelAnimator.INFINITE
+            start()
+        }
+    }
 }
 
 
