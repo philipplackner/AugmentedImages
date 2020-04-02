@@ -1,0 +1,122 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Take 001',
+          runtime_name: 'Beedrill_Animation',
+        },
+      ],
+      path: 'sampledata/models/Beedrill_Animation.fbx',
+    },
+    {
+      clips: [
+        {
+          name: 'Take 001',
+          runtime_name: 'Beedrill_Animation',
+        },
+      ],
+      path: 'sampledata/models/Beedrill_Animation.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Beedrill',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'Beedrill_albedo',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'Cell',
+      parameters: [
+        {
+          baseColor: [
+            0.098039000000000001,
+            0.086275000000000004,
+            0,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/models/Beedrill_Animation.fbx',
+    name: 'Beedrill_Animation',
+    recenter: 'root',
+    scale: 0.513073,
+  },
+  samplers: [
+    {
+      file: 'sampledata/models\\Textures\\Beedrill_albedo.jpg',
+      name: 'Beedrill_albedo',
+      pipeline_name: 'Textures\\Beedrill_albedo.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

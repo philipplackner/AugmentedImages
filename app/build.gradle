@@ -3,6 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.ar.sceneform.plugin'
 
+sceneform.asset(
+        'sampledata/models/Beedrill_Animation.fbx',
+        'default',
+        'sampledata/models/Beedrill_Animation.sfa',
+        'src/main/res/raw/beedrill',
+        ['sampledata/models/Beedrill_Animation.fbx']
+)
 
 android {
     compileSdkVersion 29
