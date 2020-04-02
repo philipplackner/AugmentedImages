@@ -9,7 +9,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.google.ar.core.AugmentedImageDatabase
 import com.google.ar.core.Config
 import com.google.ar.core.Session
@@ -17,12 +16,15 @@ import com.google.ar.sceneform.ux.ArFragment
 import java.io.IOException
 
 private const val REQUEST_CODE_CHOOSE_IMAGE = 0
+private const val USE_DATABASE = true
 
 class ImageArFragment : ArFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        chooseNewImage()
+        if(!USE_DATABASE) {
+            chooseNewImage()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,6 +37,9 @@ class ImageArFragment : ArFragment() {
     override fun getSessionConfiguration(session: Session?): Config {
         val config = super.getSessionConfiguration(session)
         config.focusMode = Config.FocusMode.AUTO
+        if(USE_DATABASE) {
+            config.augmentedImageDatabase = createAugmentedImageDatabase(session ?: return config)
+        }
         return config
     }
 
@@ -55,6 +60,16 @@ class ImageArFragment : ArFragment() {
             config.augmentedImageDatabase = database
             config.updateMode = Config.UpdateMode.LATEST_CAMERA_IMAGE
             session.configure(config)
+        }
+    }
+
+    private fun createAugmentedImageDatabase(session: Session): AugmentedImageDatabase? {
+        return try {
+            val inputStream = resources.openRawResource(R.raw.my_image_database)
+            AugmentedImageDatabase.deserialize(session, inputStream)
+        } catch(e: IOException) {
+            Log.e("ImageArFragment", "IOException while loading augmented image from storage", e)
+            null
         }
     }
 
