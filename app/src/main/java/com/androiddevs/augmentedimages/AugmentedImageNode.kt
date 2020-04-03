@@ -1,6 +1,7 @@
 package com.androiddevs.augmentedimages
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import com.google.ar.core.AugmentedImage
 import com.google.ar.sceneform.AnchorNode
@@ -26,7 +27,6 @@ class AugmentedImageNode(
         this.image = image
         if(!modelCompletableFuture.isDone) {
             modelCompletableFuture.thenAccept {
-                renderable = it
                 setAugmentedImage(image)
             }.exceptionally {
                 Toast.makeText(context, "Error creating renderable", Toast.LENGTH_LONG).show()
@@ -34,6 +34,7 @@ class AugmentedImageNode(
             }
             return
         }
+        renderable = modelCompletableFuture.get()
         anchor = image.createAnchor(image.centerPose)
 
         val modelNode = Node().apply {

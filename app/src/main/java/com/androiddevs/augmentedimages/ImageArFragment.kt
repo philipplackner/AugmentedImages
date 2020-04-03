@@ -16,7 +16,7 @@ import com.google.ar.sceneform.ux.ArFragment
 import java.io.IOException
 
 private const val REQUEST_CODE_CHOOSE_IMAGE = 0
-private const val USE_DATABASE = true
+private const val USE_DATABASE = false
 
 class ImageArFragment : ArFragment() {
 
